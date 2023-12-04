@@ -25,24 +25,10 @@ public class Day01
         var sum = 0;
         foreach (var s in input)
         {
-            var firstDigit = GetFirstDigit(s);
-            var lastDigit = GetFirstDigit(s.Reverse());
+            var firstDigit = s.First(char.IsDigit);
+            var lastDigit = s.Last(char.IsDigit);
             sum += int.Parse($"{firstDigit}{lastDigit}");
         };
         return sum;
     }
-
-    private char GetFirstDigit(IEnumerable<char> line)
-    {
-        foreach (var character in line)
-        {
-            if (char.IsDigit(character))
-            {
-                return character;
-            }
-
-        }
-        throw new Exception($"Found no digit in {line}");
-    }
-
 }
